@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+*.env
+.idea/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/node_modules/
+**/dist/
+frontend/output/
+**/data/
+backend/data-manual*/
+*.sqlite3
+*.sqlite3-*
+.DS_Store
