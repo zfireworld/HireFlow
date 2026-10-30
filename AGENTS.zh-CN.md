@@ -6,12 +6,10 @@
 
 ## 构建、测试与开发命令
 
-- `docker compose up -d --build`：构建并启动服务，页面地址为 `http://localhost:8080`。
-- `docker compose logs -f backend`：查看后端日志；`docker compose down` 停止服务并保留数据卷。
 - 首次使用时复制 `.env.example` 为 `.env`，然后执行 `cd backend; pip install -r requirements.txt; uvicorn app.main:app --reload --port 8000`；按需在配置文件中设置可写的 `DATA_DIR`。
 - `cd frontend; npm install; npm run dev`：在 `http://localhost:5173` 启动 Vite，`/api` 代理至 8000 端口。
 - `cd frontend; npm run build`：运行 `vue-tsc` 类型检查并生成 `dist/`。
-- `python scripts/smoke-test.py`：Docker 服务启动后检查基础 API。
+- `python scripts/smoke-test.py`：本地后端启动后检查基础 API。
 
 ## 代码风格与命名
 

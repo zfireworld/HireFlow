@@ -68,7 +68,7 @@ def test_model_workflows_accept_wrapped_and_fenced_json(monkeypatch):
 def test_custom_model_settings_require_safe_endpoint():
     with pytest.raises(ValidationError):
         AIConfig(mode='custom', model='m', base_url='http://example.com/v1', api_key='secret')
-    config = AIConfig(mode='custom', model='local', base_url='http://host.docker.internal:11434/v1')
+    config = AIConfig(mode='custom', model='local', base_url='http://127.0.0.1:11434/v1')
     assert config.api_key is None
     payload = MessageIn(external_message_id='example-message', ai_config=config)
     assert payload.ai_config.mode == 'custom'

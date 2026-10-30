@@ -5,8 +5,7 @@ from .configuration.files import ConfigFileReader
 
 BACKEND_DIR = Path(__file__).resolve().parent.parent
 PROJECT_FILE = BACKEND_DIR.parent / '.env'
-CONTAINER_FILE = BACKEND_DIR / '.env'
-CONFIG_FILE = config_path(PROJECT_FILE if PROJECT_FILE.is_file() else CONTAINER_FILE)
+CONFIG_FILE = config_path(PROJECT_FILE)
 values = ConfigFileReader(CONFIG_FILE).read()
 
 

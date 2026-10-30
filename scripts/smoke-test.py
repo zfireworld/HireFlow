@@ -1,6 +1,6 @@
-"""No third-party packages required. Run after Docker Compose starts."""
+"""本地后端启动后检查基础 API，无需第三方依赖。"""
 import json,sys,urllib.request
-base=(sys.argv[1] if len(sys.argv)>1 else 'http://localhost:8080').rstrip('/')
+base=(sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8000').rstrip('/')
 for path in ['/api/v1/health','/api/v1/stats/overview','/api/v1/applications','/api/v1/reviews']:
     try:
         with urllib.request.urlopen(base+path,timeout=8) as r:

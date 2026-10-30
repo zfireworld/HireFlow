@@ -44,10 +44,10 @@ def test_compatible_model_json_call_and_non_text_failure(monkeypatch):
     assert [m.content for m in captured['messages']] == ['system', 'user']
     assert captured['invoke']['response_format'] == {'type': 'json_object'}
     model.complete_json('system', 'user', timeout=90, config=AIConfig(
-        mode='custom', model='local-model', base_url='http://host.docker.internal:11434/v1'))
+        mode='custom', model='local-model', base_url='http://127.0.0.1:11434/v1'))
     assert captured['options']['model'] == 'local-model'
     assert captured['options']['api_key'] == 'not-needed'
-    assert captured['options']['base_url'] == 'http://host.docker.internal:11434/v1'
+    assert captured['options']['base_url'] == 'http://127.0.0.1:11434/v1'
     model.complete_json('system', 'user', timeout=35, config=AIConfig(
         mode='custom', model='remote-model', base_url='https://example.com/v1', api_key='test-key'))
     assert captured['options']['api_key'] == 'test-key'

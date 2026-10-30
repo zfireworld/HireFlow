@@ -19,6 +19,6 @@ class AIConfig(BaseModel):
             parsed = urlparse(self.base_url or '')
             if parsed.scheme not in ('http', 'https') or not parsed.netloc or parsed.username or parsed.password:
                 raise ValueError('自定义接口地址必须是有效的 HTTP(S) URL，且不能包含账号密码')
-            if parsed.scheme == 'http' and self.api_key and parsed.hostname not in ('localhost', '127.0.0.1', 'host.docker.internal'):
+            if parsed.scheme == 'http' and self.api_key and parsed.hostname not in ('localhost', '127.0.0.1'):
                 raise ValueError('携带 API Key 的远程接口必须使用 HTTPS')
         return self

@@ -2,16 +2,14 @@
 
 ## Project Structure & Module Organization
 
-`backend/app/api/` contains FastAPI routes; `entities/` holds SQLAlchemy models, `schemas/` request and result models, `services/` business logic, `configuration/` file settings, `storage/` file storage, `agents/` AI workflows, `prompts/` instructions, and `clients/` model and HiFlow integrations. Tests live in `backend/tests/`; the Vue 3 UI lives in `frontend/src/`. Root `docker-compose.yml` connects services; `.env.example` lists configuration.
+`backend/app/api/` contains FastAPI routes; `entities/` holds SQLAlchemy models, `schemas/` request and result models, `services/` business logic, `configuration/` file settings, `storage/` file storage, `agents/` AI workflows, `prompts/` instructions, and `clients/` model and HiFlow integrations. Tests live in `backend/tests/`; the Vue 3 UI lives in `frontend/src/`. `.env.example` lists configuration.
 
 ## Build, Test, and Development Commands
 
-- `docker compose up -d --build`: build and start both services; open `http://localhost:8080`.
-- `docker compose logs -f backend`: follow backend logs; `docker compose down` stops the stack while retaining its named data volume.
 - Copy `.env.example` to `.env` if absent, then run `cd backend; pip install -r requirements.txt; uvicorn app.main:app --reload --port 8000`. Set writable storage in the file's `DATA_DIR` if needed.
 - `cd frontend; npm install; npm run dev`: run Vite at `http://localhost:5173`, with `/api` proxied to port 8000.
 - `cd frontend; npm run build`: type-check with `vue-tsc` and produce `dist/`.
-- `python scripts/smoke-test.py`: check basic endpoints after the Docker stack starts.
+- `python scripts/smoke-test.py`: check basic endpoints after the local backend starts.
 
 ## Coding Style & Naming Conventions
 
